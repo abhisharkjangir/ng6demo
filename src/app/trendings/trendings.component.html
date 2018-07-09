@@ -1,0 +1,24 @@
+<div>
+  <!-- <input type="text" ([ngModel])="query" /> -->
+  <div *ngIf="undefined === trendings">Loading...</div>
+  <div class="flexWrapper">
+    <div *ngIf="undefined !== trendings">
+      <ul>
+        <li *ngFor="let video of trendings" (click)="GetVideoData(video)">
+          <img [src]="video.snippet.thumbnails.default.url" />
+          <p *ngIf="video.checked == true" class="checked">checked</p>
+          <p (click)="GetVideoData(video)">{{video.snippet.title}} </p>
+        </li>
+      </ul>
+      <button type="button" (click)="sendSelected()">Submit</button>
+    </div>
+    <div *ngIf="undefined !== selectedTrending">
+      <ul>
+        <li *ngFor="let svideo of selectedTrending" >
+          <img [src]="svideo.snippet.thumbnails.default.url" />
+          <p >{{svideo.snippet.title}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
